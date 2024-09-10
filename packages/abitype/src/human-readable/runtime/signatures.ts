@@ -51,12 +51,12 @@ export function execFunctionSignature(signature: string) {
 const structSignatureRegex =
   /^struct (?<name>[a-zA-Z$_][a-zA-Z0-9$_]*) \{(?<properties>.*?)\}$/
 export function isStructSignature(signature: string) {
-  return structSignatureRegex.test(signature)
+  return structSignatureRegex.test(signature.trim())
 }
 export function execStructSignature(signature: string) {
   return execTyped<{ name: string; properties: string }>(
     structSignatureRegex,
-    signature,
+    signature.trim(),
   )
 }
 
